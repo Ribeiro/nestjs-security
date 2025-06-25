@@ -136,3 +136,7 @@ nestjs-security/
 * PostgreSQL
 * Redis (opcional para antifraude)
 
+## Projeto exemplo
+
+ - Você encontra na pasta nestjs-security-example desde repo.
+
