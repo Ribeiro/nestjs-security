@@ -1,0 +1,38 @@
+{
+  "name": "nestjs-security-example",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "audit:migration": "ts-node -r tsconfig-paths/register tools/audit-migration.ts"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.1.3",
+    "@nestjs/config": "^3.3.0",
+    "@nestjs/core": "^11.1.3",
+    "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/swagger": "^11.2.0",
+    "@nestjs/typeorm": "^11.0.0",
+    "cross-env": "^7.0.3",
+    "ioredis": "^5.3.1",
+    "nest-commander": "^3.17.0",
+    "nestjs-security": "file:../nestjs-security",
+    "pg": "^8.16.2",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.8.0",
+    "swagger-ui-express": "^5.0.1",
+    "typeorm": "^0.3.25"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^10.0.0",
+    "@nestjs/schematics": "^10.0.0",
+    "@nestjs/testing": "^10.0.0",
+    "@types/express": "^5.0.3",
+    "dotenv": "^16.5.0",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.2.2"
+  }
+}
