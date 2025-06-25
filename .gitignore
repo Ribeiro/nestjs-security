@@ -1,0 +1,50 @@
+# Node.js
+node_modules/
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Yarn link & offline cache
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+.yarnrc.yml
+
+# Testing
+coverage/
+jest-html-reporters-*.html
+test-results.xml
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDEs/Editors
+.idea/
+*.iml
+
+# Optional: Turbo/Monorepo caching (se usar)
+.cache/
+turbo/
+
+# Optional: ts-morph generated artifacts (se gerar dinamicamente)
+generated-audit-entities/

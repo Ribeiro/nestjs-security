@@ -1,0 +1,5 @@
+export const REDIS_CLIENT = 'REDIS_CLIENT';
+export const AUDIT_CONNECTION = 'AUDIT_CONNECTION';
+export const HTTP_CALL = 'HTTP_CALL';
+export const ANTI_FRAUD = 'ANTI_FRAUD';
+export const RATE_LIMIT_EXCEEDED = 'RATE_LIMIT_EXCEEDED';
