@@ -77,26 +77,6 @@ import { RandomUserModule } from './usuario/random-user.module';
 export class AppModule {}
 ```
 
-## Auditoria de Entidades - em caso de insert/update/delete armazena inclusive o diff em tabela de auditoria usando um subscriber do TypeORM
-
-```typescript
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-import { Auditable } from 'nestjs-security';
-
-@Auditable()
-@Entity()
-export class Pagamento {
-  @PrimaryGeneratedColumn()
-  id!: number;
-
-  @Column()
-  cpf!: string;
-
-  @Column({ type: 'decimal', precision: 10, scale: 2 })
-  valor!: number;
-}
-```
-
 ## Exemplo de config no main.ts
 
 ```typescript
@@ -128,6 +108,26 @@ async function bootstrap() {
 bootstrap();
 ```
 
+
+## Auditoria de Entidades - em caso de insert/update/delete armazena inclusive o diff em tabela de auditoria usando um subscriber do TypeORM
+
+```typescript
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Auditable } from 'nestjs-security';
+
+@Auditable()
+@Entity()
+export class Pagamento {
+  @PrimaryGeneratedColumn()
+  id!: number;
+
+  @Column()
+  cpf!: string;
+
+  @Column({ type: 'decimal', precision: 10, scale: 2 })
+  valor!: number;
+}
+```
 
 ## Decorator Antifraude - bane o IP por tempo configurado via Redis e armazena o evento no Postgres com os dados do usuário e IP
 
