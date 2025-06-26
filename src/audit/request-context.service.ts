@@ -1,4 +1,4 @@
-import { Injectable, NestMiddleware } from '@nestjs/common';
+import { Injectable, NestMiddleware, Logger } from '@nestjs/common';
 import { AsyncLocalStorage } from 'async_hooks';
 import { Request, Response, NextFunction } from 'express';
 
@@ -23,6 +23,8 @@ export class RequestContextService {
 
 @Injectable()
 export class RequestContextMiddleware implements NestMiddleware {
+  private readonly logger = new Logger(RequestContextMiddleware.name);
+
   constructor(private readonly ctx: RequestContextService) {}
 
   use(req: Request, res: Response, next: NextFunction) {
@@ -32,13 +34,14 @@ export class RequestContextMiddleware implements NestMiddleware {
       req.socket.remoteAddress ??
       undefined;
 
-    this.ctx.run(
-      {
-        userId: u?.id,
-        username: u?.username,
-        ip,
-      },
-      next,
-    );
+    const context: RequestContext = {
+      userId: u?.id,
+      username: u?.username,
+      ip,
+    };
+
+    this.logger.debug(`Request context captured: ${JSON.stringify(context)}`);
+
+    this.ctx.run(context, next);
   }
 }

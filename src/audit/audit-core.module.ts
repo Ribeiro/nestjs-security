@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AuditService } from './audit.service';
-import { RequestContextService } from './request-context.service';
+import { RequestContextMiddleware, RequestContextService } from './request-context.service';
 import { AUDIT_CONNECTION } from '../tokens';
 
 @Module({
@@ -11,7 +11,8 @@ import { AUDIT_CONNECTION } from '../tokens';
       inject: [AUDIT_CONNECTION],
     },
     RequestContextService,
+    RequestContextMiddleware,
   ],
-  exports: [AuditService, RequestContextService],
+  exports: [AuditService, RequestContextService, RequestContextMiddleware],
 })
 export class AuditCoreModule {}

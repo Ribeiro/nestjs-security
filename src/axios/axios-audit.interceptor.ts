@@ -65,9 +65,9 @@ export class AxiosAuditInterceptor {
       return;
     }
 
-    this.logger.debug(`Auditing started for "${url}" with status ${status}`);
-
     const context = this.ctx.getContext();
+
+    this.logger.debug(`Auditing started for "${url}" with status ${status} and context ${JSON.stringify(context)}`);
 
     const auditEntry = {
       entityName: HTTP_CALL,
