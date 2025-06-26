@@ -86,20 +86,35 @@ createPayment(data: CreatePaymentDto) {
 }
 ```
 
-## Interceptor Antifraude com Auditoria
+## Exemplo de config no main.ts
 
 ```typescript
-const interceptor = app.get(AntifraudInterceptor);
-app.useGlobalInterceptors(interceptor);
-```
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { setupSwagger } from './swagger';
+import { AllExceptionsFilter } from './common/filters/all-exceptions.filter';
+import {
+  RequestContextMiddleware,
+  AntifraudInterceptor,
+} from 'nestjs-security';
 
-## Adicione o decorator @Antifraud() em métodos que exigem validação antifraude:
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
 
-```typescript
-@Antifraud({ strategy: 'default', maxAttempts: 5 })
-async executeTransaction(dto: TransactionDto) {
-  return this.service.process(dto);
+  //Middleware para uso com o AxiosAuditInterceptor - RequestContextService
+  const requestContextMiddleware = app.get(RequestContextMiddleware);
+  app.use(requestContextMiddleware.use.bind(requestContextMiddleware));
+
+  setupSwagger(app); 
+  app.useGlobalFilters(new AllExceptionsFilter());
+
+  //Interceptor do Antifraude
+  app.useGlobalInterceptors(app.get(AntifraudInterceptor));
+
+  await app.listen(3000);
+  console.log(`🚀 App started at http://localhost:3000`);
 }
+bootstrap();
 ```
 
 ## Interceptor Axios com Auditoria
