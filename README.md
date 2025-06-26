@@ -131,6 +131,7 @@ async fetchUser() {
 
 ## Estrutura do Projeto
 
+```text
 nestjs-security/
 ├── audit/               # Auditoria via TypeORM
 │   ├── audit.module.ts
@@ -143,6 +144,7 @@ nestjs-security/
 ├── .gitignore
 ├── package.json
 └── tsconfig.json
+```
 
 
 🛠️ Requisitos:
