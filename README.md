@@ -109,7 +109,7 @@ bootstrap();
 ```
 
 
-## Auditoria de Entidades - em caso de insert/update/delete armazena inclusive o diff em tabela de auditoria usando um subscriber do TypeORM
+## Auditoria de Entidades - em caso de insert/update/delete armazena inclusive o diff no Postgres em tabela de auditoria usando um subscriber do TypeORM
 
 ```typescript
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
