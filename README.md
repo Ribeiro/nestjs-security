@@ -128,6 +128,7 @@ async fetchUser() {
 }
 ```
 
+
 ## Estrutura do Projeto
 
 nestjs-security/
@@ -142,6 +143,7 @@ nestjs-security/
 ├── .gitignore
 ├── package.json
 └── tsconfig.json
+
 
 🛠️ Requisitos:
 
